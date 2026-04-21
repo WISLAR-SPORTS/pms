@@ -93,23 +93,48 @@ LOGOUT_REDIRECT_URL = '/'
 
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
 WSGI_APPLICATION = 'pms.wsgi.application'
+import os
+import dj_database_url
+import os
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
 
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',  # switch from sqlite3 to mysql
-        'NAME': 'pms_db',                      # your MySQL database
-        'USER': 'issa_user',                   # MySQL user
-        'PASSWORD': '0754206035issa',       # MySQL password
-        'HOST': 'localhost',                   # MySQL server host
-        'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
-    }
-}
-
+#DATABASES = {
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',  # switch from sqlite3 to mysql
+    #    'NAME': 'pms_db',                      # your MySQL database
+     #   'USER': 'issa_user',                   # MySQL user
+      #  'PASSWORD': '0754206035issa',       # MySQL password
+      #  'HOST': 'localhost',                   # MySQL server host
+      #  'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
+    #}
+#}
+  
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
