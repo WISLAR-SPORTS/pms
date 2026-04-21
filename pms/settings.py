@@ -114,14 +114,17 @@ import os
 import dj_database_url
 import os
 import dj_database_url
+import os
+import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,   # 🔥 FIX FOR CURSOR ERROR
-        ssl_require=True
+        conn_max_age=0,
     )
 }
+
+DISABLE_SERVER_SIDE_CURSORS = True
 
 
 # Database
