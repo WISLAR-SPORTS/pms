@@ -46,9 +46,9 @@ TEMPLATES = [
 SECRET_KEY = 'django-insecure-mfx7i3ex1njfh^3smd%nuaa0pan614+x%^*udt*-*0_-s2j+#0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["issa-projecthub.onrender.com"]
 
 
 # Application definition
