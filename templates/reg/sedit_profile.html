@@ -1,0 +1,97 @@
+{% extends "base_supervisor.html" %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4>Edit Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                      
+                        <div class="mb-3">
+                          {{ form.first_name.label_tag }}
+                          {{ form.first_name }}
+                          {% for error in form.first_name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <div class="mb-3">
+                          {{ form.last_name.label_tag }}
+                          {{ form.last_name }}
+                          {% for error in form.last_name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <div class="mb-3">
+                          {{ form.email.label_tag }}
+                          {{ form.email }}
+                          {% for error in form.email.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <div class="mb-3">
+                          {{ form.department.label_tag }}
+                          {{ form.department }}
+                          {% for error in form.department.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <hr>
+                        <h5>Change Password (optional)</h5>
+                      
+                        <div class="mb-3">
+                          {{ form.old_password.label_tag }}
+                          {{ form.old_password }}
+                          {% for error in form.old_password.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <div class="mb-3">
+                          {{ form.new_password1.label_tag }}
+                          {{ form.new_password1 }}
+                      
+                          <!-- 🔥 Password rules hint -->
+                          <small class="text-muted">
+                            Password must be at least 8 characters and not entirely numeric.
+                          </small>
+                      
+                          {% for error in form.new_password1.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        <div class="mb-3">
+                          {{ form.new_password2.label_tag }}
+                          {{ form.new_password2 }}
+                          {% for error in form.new_password2.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                          {% endfor %}
+                        </div>
+                      
+                        {% if form.non_field_errors %}
+                          <div class="alert alert-danger mt-2">
+                            {% for error in form.non_field_errors %}
+                              {{ error }}
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      
+                        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                        <a href="{% url 'auth:profile' %}" class="btn btn-secondary mt-3">Cancel</a>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

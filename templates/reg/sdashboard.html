@@ -1,0 +1,108 @@
+{% extends "base_supervisor.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2>Welcome, {{ username }} 👋</h2>
+    <p><strong>Department:</strong> {{ department }}</p>
+
+    <hr>
+
+    <h4>Your Assigned Projects</h4>
+
+    {% if projects %}
+        <table class="table table-bordered mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Student</th>
+                
+                    <th>Program</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.title }}</td>
+                    <td>{{project.description}} </td>
+
+                    <td>
+                        {% for student in project.students.all %}
+                            {{ student.username }}<br>
+                        {% empty %}
+                            No students
+                        {% endfor %}
+                    </td>
+
+                    <td>{{ project.program }}</td>
+
+                    <td>
+                        {{ project.start_date|default:"Not assigned" }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info mt-3">
+            No projects assigned to you yet.
+        </div>
+    {% endif %}
+
+    <h4 class="mt-5">Submissions for Your Projects</h4>
+    {% for submission in submissions %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+    
+            <h5 class="card-title">
+                {{ submission.project.title }}
+            </h5>
+    
+            <p class="card-text">
+                <strong>Student:</strong> {{ submission.student.username }} <br>
+                <strong>Submitted:</strong> {{ submission.submitted_at }}
+            </p>
+    
+            {% if not submission.is_seen %}
+                <span class="badge bg-danger">NEW</span>
+            {% endif %}
+    
+            <a href="{% url 'submission:submission_detail' submission.id %}" class="btn btn-primary btn-sm">
+                View
+            </a>
+    
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.submission-card {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.project-title {
+    color: #4CAF50;
+    margin-bottom: 8px;
+}
+</style>
+
+</div>
+{% endblock %}

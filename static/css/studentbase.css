@@ -1,0 +1,46 @@
+/* Smooth modern feel */
+body {color: #333;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+
+    /* Dark SaaS grid background */
+    background: #0b1220;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+
+    margin: 0;
+    padding: 0;
+}
+
+/* Main content spacing */
+.main-content {
+    min-height: 80vh;
+}
+
+/* Navbar polish */
+.navbar {
+    backdrop-filter: blur(10px);
+}
+
+/* Smooth hover for links */
+.nav-link {
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Theme dropdown cleaner */
+#theme-select {
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+/* Card spacing consistency */
+.card {
+    border-radius: 12px;
+}

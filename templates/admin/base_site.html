@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+
+{% block branding %}
+    {{ block.super }}  {# keep Jazzmin logo and header #}
+
+    {% if request.jazzmin_topmenu_links %}
+        <div style="display:inline-block; margin-left:20px;">
+            {% for link in request.jazzmin_topmenu_links %}
+                <a href="{{ link.url }}" class="btn btn-secondary" style="margin-right:10px;">
+                    {{ link.name }}
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

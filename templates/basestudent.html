@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}FYP Management System{% endblock %}</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+
+<link href="{% static 'css/submission.css' %}" rel="stylesheet">
+<link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+
+<link href="{% static 'css/sdashboard.css' %}" rel="stylesheet">
+<link href="{% static 'css/studentbase.css' %}" rel="stylesheet">
+<link href="{% static 'css/submitprojectprogress.css' %}" rel="stylesheet">
+<link href="{% static 'css/submitproject.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/theme.css' %}" rel="stylesheet">
+
+{% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<!-- NAVBAR --><nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="#">FYP Portal</a>
+
+        <!-- Mobile toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav content -->
+        <div class="collapse navbar-collapse" id="navbarTop">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth:dashboard' %}">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'submission:submit' %}">Upload Work</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'project:submit_project' %}">Project</a>
+                </li>
+
+                <!-- 🎨 Theme switcher FIXED -->
+                <li class="nav-item">
+                    <select id="theme-select" class="form-select form-select-sm">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="blue">Blue</option>
+                        <option value="default">Default</option>
+                    </select>
+                </li>
+
+                <!-- Profile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle"></i> {{ user.username }}
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'auth:profile' %}">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'auth:logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="container py-4">
+    <div class="row justify-content-center">
+
+        <main class="col-12 col-lg-10 col-xl-9 main-content">
+
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+
+            {% block content %}
+            <div class="text-center mt-5">
+                <h1>Welcome, {{ user.first_name|default:user.username }}!</h1>
+                <p class="lead">Select a module from the navigation.</p>
+            </div>
+            {% endblock %}
+
+        </main>
+
+    </div>
+</div>
+<!-- FOOTER -->
+<footer class="text-center py-3 border-top bg-white">
+    <small class="text-muted">
+        &copy; {% now "Y" %} FYP Management System
+    </small>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+<script>// Get select element
+    const themeSelect = document.getElementById('theme-select');
+
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Apply saved theme
+    if (savedTheme) {
+        document.body.classList.add(savedTheme);
+        themeSelect.value = savedTheme;
+    } else {
+        themeSelect.value = 'default';
+    }
+    
+    // Handle change
+    themeSelect.addEventListener('change', function () {
+        const selectedTheme = this.value;
+    
+        // remove all theme classes first
+        document.body.classList.remove('light', 'dark', 'blue');
+    
+        if (selectedTheme === 'default') {
+            localStorage.removeItem('theme'); // 🔥 key part
+        } else {
+            document.body.classList.add(selectedTheme);
+            localStorage.setItem('theme', selectedTheme);
+        }
+    
+    });</script>
+</body>
+</html>

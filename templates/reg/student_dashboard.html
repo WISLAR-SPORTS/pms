@@ -1,0 +1,114 @@
+{% extends "basestudent.html" %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+
+    <!-- Welcome Card -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm p-3">
+                <div class="card-body">
+                    <h3 class="card-title">Welcome, {{ user.first_name }} {{ user.last_name }}!</h3>
+
+                    <p class="card-text">
+                        <strong>Department:</strong> {{ user.department.name }}<br>
+                        <strong>Branch:</strong> 
+                        {% if user.department.branch %}
+                            {{ user.department.branch.name }}
+                        {% else %}
+                            N/A
+                        {% endif %}<br>
+                        <strong>Enrollment:</strong> {{ user.enrollment_number }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="row g-4">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-white bg-primary h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-building fa-2x mb-2"></i>
+                    <h5>Department</h5>
+                    <p>{{ user.department.name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-white bg-success h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-code-branch fa-2x mb-2"></i>
+                    <h5>Branch</h5>
+                    <p>
+                        {% if user.department.branch %}
+                            {{ user.department.branch.name }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-white bg-warning h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-project-diagram fa-2x mb-2"></i>
+                    <h5>Projects</h5>
+                    <p>{{ projects_count|default:"0" }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- My Projects Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+
+            <div class="card shadow-sm">
+                <div class="class="card-header project-header"">
+                    <h5 class="mb-0 theme-title">My Projects</h5>
+                </div>
+<br>
+                <div class="card-body">
+
+                    {% if projects %}
+                        {% for project in projects %}
+
+                            <div class="project-card mb-3 shadow-sm">
+
+                                <strong>{{ project.title }}</strong><br>
+
+                                {% if project.unread_feedback > 0 %}
+                                    <span class="badge bg-danger mt-1">
+                                        New Feedback ({{ project.unread_feedback }})
+                                    </span>
+                                {% endif %}
+
+                                <br>
+
+                                <a href="{% url 'project:feedback_chat' project.id %}" 
+                                   class="btn btn-sm btn-primary mt-2">
+                                    Open Feedback Chat
+                                </a>
+
+                            </div>
+
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">You have no project assigned yet.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

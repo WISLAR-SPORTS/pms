@@ -1,0 +1,75 @@
+
+/* 🌍 Full page layout */
+.upload-wrapper {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+
+    
+}
+
+/* 🧊 SaaS card */
+.upload-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 16px;
+
+    background: rgba(228, 3, 3, 0.08);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #121212;
+
+    transition: 0.3s ease;
+}
+
+/* hover lift */
+.upload-card:hover {
+    transform: none;
+}
+
+/* Inputs styling */
+input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* focus effect */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
+
+/* Button */
+.btn-primary {
+    background: #3498db;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #2c3e50;
+    transform: scale(1.02);
+}
+
+/* Labels */
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .upload-card {
+        padding: 20px;
+    }
+}

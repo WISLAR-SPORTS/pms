@@ -1,0 +1,63 @@
+{% extends 'basestudent.html' %}
+
+{% block content %}
+
+<h2>Feedback Chat - {{ project.title }}</h2>
+
+<div style="border:1px solid #ccc; padding:10px; height:400px; overflow-y:scroll;">
+    {% for feedback in feedbacks %}
+    <div style="margin-bottom:10px;">
+
+        {% if feedback.supervisor %}
+            <div style="text-align:left;">
+                <b>Project Name:</b>
+                <div style="background:#f1f1f1; padding:8px; border-radius:8px; display:inline-block;">
+                    {{ feedback.project.title }}
+                </div>
+            </div>
+
+            <br>
+
+            {% if feedback.submission %}
+                <div style="text-align:left;">
+                    <b>Submission:</b>
+                    <div style="background:#f1f1f1; padding:8px; border-radius:8px; display:inline-block;">
+                        {{ feedback.submission.title }}
+                    </div>
+                </div>
+                <br>
+            {% endif %}
+
+            <div style="text-align:left;">
+                <b>Supervisor Comment:</b>
+                <div style="background:#f1f1f1; padding:8px; border-radius:8px; display:inline-block;">
+                    {{ feedback.comment }}
+                </div>
+            </div>
+
+        {% else %}
+            <div style="text-align:right;">
+                <b>You:</b>
+                <div style="background:#d1ffd1; padding:8px; border-radius:8px; display:inline-block;">
+                    {{ feedback.comment }}
+                </div>
+            </div>
+        {% endif %}
+
+        <small>{{ feedback.created_at }}</small>
+    </div>
+
+{% empty %}
+    <p>No feedback yet.</p>
+{% endfor %}
+</div>
+
+<hr>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.comment }}
+    <button type="submit">Send</button>
+</form>
+
+{% endblock %}

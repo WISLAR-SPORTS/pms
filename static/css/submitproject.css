@@ -1,0 +1,87 @@
+
+/* 🌍 Full page layout */
+.project-wrapper {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+
+    
+
+   
+}
+
+/* 🧊 Card upgrade */
+.project-card {
+    width: 100%;
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 16px;
+
+    background: rgba(58, 6, 178, 0.08);
+    backdrop-filter: blur(12px);
+
+    border: 1px solid #094bda;
+    color: #fff;
+    transition: none;
+
+
+  
+}
+
+
+/* 📌 header styling */
+.project-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.project-header h4 {
+    font-weight: 1000;
+    margin-bottom: 5px;
+}
+.project-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: rgba(255,255,255,0.08) !important;
+}
+
+/* Inputs */
+input, select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Focus effect */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 10px rgba(52,152,219,0.5);
+}
+
+/* Button */
+.submit-btn {
+    border-radius: 30px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+}
+
+/* Labels */
+.form-label {
+    font-weight: 500;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    .project-card {
+        padding: 20px;
+    }
+}

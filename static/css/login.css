@@ -1,0 +1,95 @@
+/* Full page center */
+body {
+    
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #195208;
+
+    /* grid background */
+    background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04), transparent 40%),
+
+    /* grid lines */
+    linear-gradient(rgba(248, 242, 242, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 241, 241, 0.04) 1px, transparent 1px);
+
+    background-size: 50px 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Wrapper */
+.login-wrapper {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Card */
+.login-card {
+    max-width: 400px;
+    margin: auto;
+    
+    padding: 30px;
+    
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+/* Inputs */
+.form-control:focus {
+    box-shadow: none;
+    border-color: #3498db;
+}
+
+/* Button */
+.btn-primary {
+    background: #3498db;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #2c3e50;
+}
+
+
+a {
+    color: #4dabf7;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* smooth hover effect */
+a:hover {
+    color: #f1c40f;
+}
+
+/* subtle animated underline (modern UI style) */
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: #f1c40f;
+    transition: width 0.3s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .login-card {
+        padding: 20px;
+    }
+}

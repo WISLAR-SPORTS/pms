@@ -1,0 +1,64 @@
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.submission-card {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.project-title {
+    color: #4CAF50;
+    margin-bottom: 8px;
+}
+
+
+/* 🌍 Global dashboard feel */
+
+
+
+/* 🧊 Welcome card upgrade */
+.bg-light {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    border-radius: 14px;
+}
+
+/* 🎯 Dashboard icon animation */
+.card i {
+    transition: 0.3s;
+}
+
+.card:hover i {
+    transform: scale(1.2);
+}
+
+/* 📱 Better spacing for mobile */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 15px;
+    }
+}
+
+/* 🧠 My Projects section polish */
+.project-card {
+    padding: 15px;
+    border-radius: 12px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+
+/* 🔴 Badge glow */
+.badge {
+    font-size: 12px;
+}

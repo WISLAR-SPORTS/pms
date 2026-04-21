@@ -1,0 +1,138 @@
+
+        /* 🌙 FULL DARK MODE SYSTEM */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+    background-color:  #6ed56e30 !important;
+}
+
+/* Hero */
+.dark-mode .hero {
+    background: linear-gradient(to right, #0d5409, #2ae85a, #6be8d9);
+}
+
+/* Sections */
+.dark-mode section {
+    background-color: #6ed56e30 !important;
+    color: #f1f1f1;
+}
+
+/* Cards */
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Carousel captions */
+.dark-mode .carousel-caption {
+    background: rgba(0,0,0,0.7);
+}
+
+/* Buttons */
+.dark-mode .btn-warning {
+    background-color: #f39c12;
+    border: none;
+}
+
+.dark-mode .btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Text muted areas */
+.dark-mode p,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6 {
+    color: #eef1f4;
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #000 !important;
+}
+
+/* How it works section fix */
+.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+}
+
+        /* Carousel */
+        .carousel-item img {
+            height: 60vh;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img { height: 300px; }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 60px 15px; }
+            .hero h1 { font-size: 28px; }
+        }
+
+        /* Cards */
+        .feature-card {
+            transition: 0.3s;
+            border-radius: 12px;
+            border: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 16px;
+            border-radius: 30px;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+        
+        .card {
+            border-radius: 12px;
+        }
+
+        /* CTA Section */
+.cta-section {
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* Optional polish */
+.cta-section h2 {
+    font-weight: 700;
+}
+
+.cta-section .btn {
+    border-radius: 30px;
+    padding: 12px 20px;
+}
+
+/* Dark mode support */
+.dark-mode .cta-section {
+    background: linear-gradient(to right, #0d5409, #2ae85a, #6be8d9);
+}
+
+

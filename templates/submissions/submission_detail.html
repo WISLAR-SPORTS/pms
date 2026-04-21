@@ -1,0 +1,73 @@
+{% extends "base_supervisor.html" %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="card">
+    <div class="card-body">
+
+        <h4>{{ submission.title }}</h4>
+
+        <p><strong>Project:</strong> {{ submission.project.title }}</p>
+        <p><strong>Student:</strong> {{ submission.student.username }}</p>
+        <p><strong>Date:</strong> {{ submission.submitted_at }}</p>
+
+        <a href="{{ submission.file.url }}" target="_blank" class="btn btn-info">
+            View File
+        </a>
+
+        <a href="{{ submission.file.url }}" download class="btn btn-secondary">
+            Download
+        </a>
+
+        <hr>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>Feedback</label>
+                <textarea name="feedback" class="form-control">{{ submission.feedback }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Submit Feedback
+            </button>
+        </form>
+
+    </div>
+</div>
+<hr>
+
+<h5>All Submissions by {{ submission.student.username }}</h5>
+
+{% for sub in student_submissions %}
+    <div class="card mb-2">
+        <div class="card-body">
+
+            <strong>{{ sub.project.title }}</strong><br>
+            <small>{{ sub.submitted_at }}</small>
+
+            {% if not sub.is_seen %}
+                <span class="badge bg-danger">NEW</span>
+            {% endif %}
+
+            <br>
+
+            <a href="{% url 'submission:submission_detail' sub.id %}" class="btn btn-sm btn-primary mt-2">
+                View
+            </a>
+
+        </div>
+    </div>
+{% empty %}
+    <p>No submissions found.</p>
+{% endfor %}
+
+{% endblock %}

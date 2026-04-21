@@ -1,0 +1,47 @@
+/* Center the card on the page */
+.submission-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* vertical centering */
+    background-color: #f4f4f9; /* subtle page background */
+    padding: 20px;
+    margin-top: 0px;
+}
+
+/* Card styling */
+.submission-card {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 400px;
+    max-width: 90%;
+}
+
+/* Card title */
+.card-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Form submit button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #357ABD;
+}

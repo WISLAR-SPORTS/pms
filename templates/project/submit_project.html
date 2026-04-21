@@ -1,0 +1,127 @@
+{% extends 'basestudent.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="project-wrapper">
+
+    <div class="project-card shadow-lg">
+
+        <!-- Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Header -->
+        <div class="project-header">
+            <h4>Submit Your Project</h4>
+            <p class="text-muted">Fill in all required details carefully</p>
+        </div>
+
+        <!-- Form -->
+        <form method="post" id="projectForm">
+            {% csrf_token %}
+
+            <!-- Branch -->
+            <div class="mb-3">
+                <label class="form-label">Branch</label>
+                {{ form.branch }}
+            </div>
+
+            <!-- Department -->
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                {{ form.department }}
+            </div>
+
+            <!-- Program -->
+            <div class="mb-3">
+                <label class="form-label">Program</label>
+                {{ form.program }}
+            </div>
+
+            <!-- Dynamic fields -->
+            {% for field in form %}
+                {% if field.name != 'branch' and field.name != 'department' and field.name != 'program' %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+
+                        {% if field.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ field.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary w-100 submit-btn">
+                Submit Project
+            </button>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger mt-3">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ✅ jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- ✅ Dynamic Dropdown Logic -->
+<script>
+    $("#id_branch").change(function () {
+        const url = "{% url 'project:ajax_load_departments' %}";
+        const branchId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'branch_id': branchId
+            },
+            success: function (data) {
+                let html = '<option value="">Select Department</option>';
+                data.forEach(function (item) {
+                    html += `<option value="${item.id}">${item.name}</option>`;
+                });
+                $("#id_department").html(html);
+                $("#id_program").html('<option value="">Select Program</option>');
+            }
+        });
+    });
+
+    $("#id_department").change(function () {
+        const url = "{% url 'project:ajax_load_programs' %}";
+        const deptId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'department_id': deptId
+            },
+            success: function (data) {
+                let html = '<option value="">Select Program</option>';
+                data.forEach(function (item) {
+                    html += `<option value="${item.id}">${item.name}</option>`;
+                });
+                $("#id_program").html(html);
+            }
+        });
+    });
+</script>
+
+{% endblock %}
