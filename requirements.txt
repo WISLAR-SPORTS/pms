@@ -1,5 +1,6 @@
 asgiref==3.11.1
 bleach==6.3.0
+dj-database-url==3.1.2
 Django==6.0.3
 django-jazzmin==3.0.4
 django-smart-selects==1.7.2
@@ -8,9 +9,8 @@ mysqlclient==2.2.8
 packaging==26.1
 pillow==12.2.0
 psycopg2-binary==2.9.12
+python-dotenv==1.2.2
 sqlparse==0.5.5
 tzdata==2025.3
 webencodings==0.5.1
 whitenoise==6.12.0
-psycopg2-binary
-dj-database-url

@@ -6,3 +6,4 @@ staticfiles/
 *.download
 static/js/hack1_files/
 media/
+.env
