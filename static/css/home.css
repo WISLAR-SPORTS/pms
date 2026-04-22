@@ -142,8 +142,9 @@ body.dark-mode {
 
     /* 🔥 SIZE INCREASE */
     padding: 18px 28px;
-    font-size: 18px;
+    font-size: 22px;
     border-radius: 40px;
+    cursor: pointer;
 
     font-weight: bold;
     z-index: 9999;
@@ -151,7 +152,10 @@ body.dark-mode {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 
     /* 🐢 SLOWER ANIMATION */
-    animation: bounceDiagonal 18s linear infinite, colorChange 8s infinite;
+    animation: bounceDiagonal 10s linear infinite, colorChange 5s infinite;
+}
+.floating-message a{
+    text-decoration: none;
 }
 
 /* Movement */
