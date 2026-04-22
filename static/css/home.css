@@ -152,7 +152,7 @@ body.dark-mode {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 
     /* 🐢 SLOWER ANIMATION */
-    animation: bounceDiagonal 10s linear infinite, colorChange 5s infinite;
+    animation: bounceDiagonal 30s linear infinite, colorChange 5s infinite;
 }
 .floating-message a{
     text-decoration: none;
