@@ -15,7 +15,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv() 
 
 from pathlib import Path
 
@@ -51,12 +51,14 @@ TEMPLATES = [
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = 'dev-secret-key-123'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ["issa-projecthub.onrender.com"]
 
+#ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -127,22 +129,22 @@ DATABASES = {
 }
 
 # ADD THIS
-DATABASES['default']['CONN_HEALTH_CHECKS'] = True
+DATABASES['default']['CONN_HEALTH_CHECKS'] = True 
 
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-#DATABASES = {
-   # 'default': {
-    #    'ENGINE': 'django.db.backends.mysql',  # switch from sqlite3 to mysql
-    #    'NAME': 'pms_db',                      # your MySQL database
-     #   'USER': 'issa_user',                   # MySQL user
-      #  'PASSWORD': '0754206035issa',       # MySQL password
-      #  'HOST': 'localhost',                   # MySQL server host
-      #  'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
-    #}
-#}
+"""
+DATABASES = {
+   'default': {
+        'ENGINE': 'django.db.backends.mysql',  # switch from sqlite3 to mysql
+       'NAME': 'pms_db',                      # your MySQL database
+       'USER': 'issa_user',                   # MySQL user
+       'PASSWORD': '0754206035issa',       # MySQL password
+       'HOST': 'localhost',                   # MySQL server host
+        'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
+    }
+}"""
   
 
 # Password validation
@@ -157,6 +159,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+     {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': 8},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
@@ -211,11 +220,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # settings.py
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True  

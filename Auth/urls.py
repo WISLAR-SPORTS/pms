@@ -3,6 +3,7 @@ from django.urls import path
 from .views import student_register, load_departments,log, login, student_dashboard, profile, edit_profile
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
+from .views import custom_password_reset
 
 
 
@@ -20,4 +21,6 @@ urlpatterns = [
     path('logout/', log, name='logout'),
     path('profile/', profile, name='profile'),
     path('profile/edit/', edit_profile, name='edit_profile'),
+    path('reset-password/', custom_password_reset, name='reset_password'),
+
 ]

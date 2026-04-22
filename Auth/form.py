@@ -239,3 +239,46 @@ class EditProfileWithPasswordForm(EditProfileForm):
                     self.add_error('new_password1', error)
 
         return cleaned_data
+    
+  
+from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
+
+from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+
+User = get_user_model()
+
+class PasswordResetCustomForm(forms.Form):
+    email = forms.EmailField()
+    username = forms.CharField(max_length=150)
+    password = forms.CharField(widget=forms.PasswordInput)
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        username = cleaned_data.get("username")
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        # Password match
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Passwords do not match.")
+
+        # Password strength validation
+        if password:
+            try:
+                validate_password(password)
+            except ValidationError as e:
+                raise forms.ValidationError(e.messages)
+
+        # User check
+        user = User.objects.filter(email=email, username=username).first()
+        if not user:
+            raise forms.ValidationError("Invalid credentials.")
+
+        cleaned_data["user"] = user
+        return cleaned_data

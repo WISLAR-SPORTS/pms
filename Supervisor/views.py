@@ -97,7 +97,7 @@ def edit_profile(request):
                     form.add_error('old_password', 'Current password is incorrect.')
                     return render(request, 'reg/sedit_profile.html', {'form': form})
             
-            return redirect('auth:edit_profile')
+            return redirect('supervisor:sedit_profile')
     else:
         form = EditProfileWithPasswordForm(instance=user)
 #success message after updating the profile

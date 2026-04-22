@@ -14,7 +14,9 @@ from project.models import Project
 from django.db.models import Count, Q
 from django.contrib.auth import update_session_auth_hash
 from .form import StudentPasswordChangeForm
-
+from django_ratelimit.decorators import ratelimit
+from django.core.cache import cache
+from django.utils import timezone
 
 @login_required
 def edit_profile(request):
@@ -70,33 +72,95 @@ def profile(request):
     return render(request, 'reg/profile.html', context)
 
 
+#rate limit
+
+from datetime import timedelta
+
+MAX_ATTEMPTS = 5
+LOCK_TIME = 600  # 10 minutes
+
+
+def get_lock_key(username):
+    return f"login_lock:{username}"
+
+
+def get_fail_key(username):
+    return f"login_fail:{username}"
+
+def is_locked(username):
+    lock_until = cache.get(get_lock_key(username))
+
+    if not lock_until:
+        return False
+
+    # if lock expired, remove it
+    if timezone.now() > lock_until:
+        cache.delete(get_lock_key(username))
+        return False
+
+    return True
+
+def get_lock_remaining(username):
+    lock_until = cache.get(get_lock_key(username))
+
+    if not lock_until:
+        return 0
+
+    remaining = (lock_until - timezone.now()).total_seconds()
+
+    return max(int(remaining), 0)
+
+def add_failed_attempt(username):
+    key = get_fail_key(username)
+    attempts = cache.get(key, 0) + 1
+
+    cache.set(key, attempts, timeout=LOCK_TIME)
+
+    if attempts >= MAX_ATTEMPTS:
+        lock_until = timezone.now() + timedelta(seconds=LOCK_TIME)
+
+        cache.set(get_lock_key(username), lock_until, timeout=LOCK_TIME)
+        cache.delete(key)
+
+def reset_attempts(username):
+    cache.delete(get_fail_key(username))
+    cache.delete(get_lock_key(username))
+
 
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
+        # 🔴 CHECK LOCK FIRST
+        if is_locked(username):
+            remaining = get_lock_remaining(username)
+
+            
+            return render(request, 'reg/login.html', {
+                "locked": True,
+                "remaining": remaining
+            })
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             auth_login(request, user)
 
-            # Log successful login
+            # ✅ reset failures on success
+            reset_attempts(username)
+
             AuditLog.objects.create(
                 user=user,
                 action=f"User '{username}' logged in successfully"
             )
 
-            # Role-based redirection
             if user.is_superuser:
-                return redirect('/admin/')  # superusers go to Django admin
+                return redirect('/admin/')
             elif hasattr(user, 'role') and user.role == 'student':
                 return redirect('auth:dashboard')
             elif hasattr(user, 'role') and user.role == 'supervisor':
-                # Redirect to supervisor dashboard first
                 response = redirect('supervisor:sdashboard')
-
-                # If supervisor has staff status, allow admin access too
                 if user.is_staff:
                     request.session['can_access_admin'] = True
                 return response
@@ -105,16 +169,20 @@ def login(request):
             else:
                 messages.error(request, "User role not assigned")
                 return redirect('login')
+
         else:
-            # Authentication failed
+            # ❌ FAILED LOGIN → increment counter
+            add_failed_attempt(username)
+
             messages.error(request, "Invalid username or password")
+
             AuditLog.objects.create(
-                user=None,  # unknown user
+                user=None,
                 action=f"Failed login attempt for username '{username}'"
             )
+
             return render(request, 'reg/login.html')
-    
-    # If GET request, just render the login page
+
     return render(request, 'reg/login.html')
 def landing_page(request):
     return render(request, "home.html")
@@ -214,3 +282,29 @@ def log(request):
     logout(request)
 
     return redirect('/')  # redirects to home/login page
+
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .form import PasswordResetCustomForm
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+@ratelimit(key='post:email', rate='5/m', block=True)
+def custom_password_reset(request):
+    if request.method == "POST":
+        form = PasswordResetCustomForm(request.POST)
+        if form.is_valid():
+            user = form.cleaned_data["user"]
+            new_password = form.cleaned_data["password"]
+
+            user.set_password(new_password)
+            user.save()
+
+            messages.success(request, "Password reset successful.")
+            return redirect("login")
+    else:
+        form = PasswordResetCustomForm()
+
+    return render(request, "accounts/password_reset.html", {"form": form})
