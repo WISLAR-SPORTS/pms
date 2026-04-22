@@ -282,9 +282,11 @@
 
 </section>
 
-<a href="{% url 'feedback:submit_feedback' %}" class="floating-message">
+<div class="floating-message"
+     data-bs-toggle="modal"
+     data-bs-target="#feedbackModal">
     💬 please kindly click me to leave your comment in the feedback section
-</a>
+</div>
 <!-- Footer -->
 <footer class="bg-dark text-white text-center py-3">
     <p class="mb-0">© 2026 Your University | Dissertation Management System</p>
