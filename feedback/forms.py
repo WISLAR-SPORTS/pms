@@ -36,7 +36,7 @@ class TestFeedbackForm(forms.ModelForm):
             raise forms.ValidationError("HTML or scripts are not allowed.")
 
         # 🔤 Only letters, spaces, and dots allowed
-        if not re.match(r'^[A-Za-z.,!?\\s]+$', message):
+        if not re.match(r'^[A-Za-z\s.,!?]+$', message):
             raise forms.ValidationError(
                 "Only letters, spaces, and full stops (.) are allowed."
             )
