@@ -303,7 +303,7 @@ def custom_password_reset(request):
             user.save()
 
             messages.success(request, "Password reset successful.")
-            return redirect("login")
+            return redirect("auth:login")
     else:
         form = PasswordResetCustomForm()
 
