@@ -20,7 +20,8 @@ from .models import CustomUser
 
 
 class StudentRegistrationForm(UserCreationForm):
-    branch = forms.ModelChoiceField(queryset=Branch.objects.all())
+    branch = forms.ModelChoiceField(queryset=Branch.objects.none())
+    #branch = forms.ModelChoiceField(queryset=Branch.objects.all())
     department = forms.ModelChoiceField(queryset=Department.objects.none())
 
     first_name = forms.CharField(max_length=50)
