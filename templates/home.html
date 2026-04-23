@@ -21,10 +21,11 @@
    
 </head>
 
-<body>
+<body class="default-theme">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-card px-3 px-lg-5">
+    <img src="{% static 'images/LOGO.png' %}" class="nav-logo me-2" alt="Logo">
     <a class="navbar-brand fw-bold" href="#">DMS</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -36,8 +37,8 @@
             <a href="{% url 'auth:login' %}" class="btn btn-warning">
                 <i class="fas fa-sign-in-alt"></i> Login
             </a>
-
-            <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-2">
+            <span class="theme-label ms-3">Theme</span>
+            <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-2 theme-btn">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
@@ -54,36 +55,44 @@
     <a href="{% url 'auth:login' %}" class="btn btn-warning btn-lg mt-4">
         <i class="fas fa-rocket"></i> Get Started
     </a>
-</section>
-<section class="bg-dark text-white py-5 text-center">
+</section><section class="stats-section text-center py-5">
     <div class="container">
-        <div class="row">
 
-            <div class="col-6 col-md-3 mb-4">
-                <h2 class="fw-bold">500+</h2>
-                <p>Dissertations Managed</p>
+        <div class="row g-4">
+
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <h2>500+</h2>
+                    <p>Dissertations Managed</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4">
-                <h2 class="fw-bold">1200+</h2>
-                <p>Students</p>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <h2>1200+</h2>
+                    <p>Students</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4">
-                <h2 class="fw-bold">60%</h2>
-                <p>Faster Reviews</p>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <h2>60%</h2>
+                    <p>Faster Reviews</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4">
-                <h2 class="fw-bold">10+</h2>
-                <p>Departments</p>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <h2>10+</h2>
+                    <p>Departments</p>
+                </div>
             </div>
 
         </div>
+
     </div>
 </section>
-
-<!-- Carousel -->
+<!-- Carousel 
 <div id="dmsCarousel" class="carousel slide" data-bs-ride="carousel">
 
     <div class="carousel-indicators">
@@ -126,7 +135,7 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 
-</div>
+</div> -->
 
 <!--
 <button class="btn btn-primary feedback-float" data-bs-toggle="modal" data-bs-target="#feedbackModal">
@@ -196,7 +205,7 @@
 </section>
 
 <div class="modal fade" id="feedbackModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-feedback">
       <div class="modal-content">
   
         <div class="modal-header">
@@ -238,37 +247,58 @@
     </div>
   </div>
 
-<!-- How it works -->
-<section class="bg-white py-5 text-center">
-    <h2 class="fw-bold mb-4" data-aos="fade-up">How It Works</h2>
+  <!--how to get started-->
+  <section class="how-section py-5 text-center">
 
     <div class="container">
-        <div class="row text-center">
 
-            <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-                <i class="fas fa-upload fa-2x text-primary"></i>
-                <p>Submit</p>
+        <h2 class="fw-bold mb-5" data-aos="fade-up">
+            How to Get Started
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <p>Submit</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-                <i class="fas fa-search fa-2x text-success"></i>
-                <p>Review</p>
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <p>Review</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-                <i class="fas fa-comments fa-2x text-warning"></i>
-                <p>Feedback</p>
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <p>Feedback</p>
+                </div>
             </div>
 
-            <div class="col-6 col-md-3 mb-4" data-aos="fade-up">
-                <i class="fas fa-check-circle fa-2x text-danger"></i>
-                <p>Approval</p>
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p>Approval</p>
+                </div>
             </div>
 
         </div>
-    </div>
-</section>
 
+    </div>
+
+</section>
 <section class="cta-section">
     
     <div class="container">
@@ -286,11 +316,28 @@
      data-bs-toggle="modal"
      data-bs-target="#feedbackModal">
     💬 please kindly click me to leave your comment in the feedback section
-</div>
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0">© 2026 Dissertation Management System</p>
-    <p class="mb-0">Designed By Issa@</p>
+</div><footer class="footer-section text-white">
+
+    <div class="container py-4">
+
+        <div class="row text-center text-md-start align-items-center">
+
+            <div class="col-md-6 mb-3 mb-md-0">
+                <h6 class="fw-bold">Dissertation Management System</h6>
+                <p class="mb-0 small opacity-75">
+                    Managing submissions, supervision, and reviews efficiently.
+                </p>
+            </div>
+
+            <div class="col-md-6 text-md-end">
+                <p class="mb-1 small">© 2026 All Rights Reserved</p>
+                <p class="mb-0 small">Designed & Built by Issa@</p>
+            </div>
+
+        </div>
+
+    </div>
+
 </footer>
 
 <!-- Scripts (IMPORTANT: at bottom) -->
@@ -366,6 +413,30 @@
         });
     });
     </script>
+    <script>
+        function setTheme(theme) {
+            document.body.classList.remove("dark-mode", "default-theme");
+        
+            document.body.classList.add(theme);
+        
+            localStorage.setItem("theme", theme);
+        }
+        
+        // toggle dark mode only
+        function toggleDarkMode() {
+            if (document.body.classList.contains("dark-mode")) {
+                setTheme("default-theme");
+            } else {
+                setTheme("dark-mode");
+            }
+        }
+        
+        // load saved theme
+        window.onload = function () {
+            const savedTheme = localStorage.getItem("theme") || "default-theme";
+            document.body.classList.add(savedTheme);
+        };
+        </script>
   
 </body>
 </html>

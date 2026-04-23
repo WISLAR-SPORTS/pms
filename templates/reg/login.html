@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
 
-    {% load static %}
+    <style>
+
+    </style>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -20,6 +24,11 @@
 <body>
 
 <div class="login-wrapper">
+    <div class="logo-container">
+        <img src="{% static 'images/LOGO.png' %}" alt="Logo" class="login-logo">
+        <p class="brand-name">Pro<span>je</span>ct<span>@</span>Hub</p>
+
+
     <div class="login-card shadow">
 
         <h2 class="text-center mb-4">Welcome Back</h2>
@@ -90,10 +99,16 @@
                     </button>
                 </div>
             </div>
+            <div class="text-center mt-3">
+                <p>
+                    Forgot Password?
+                    <a href="{% url 'auth:reset_password' %}">Reset Password</a>
+                </p>
+            </div>
 
             <!-- Login Button -->
             <button type="submit" class="btn btn-primary w-100">
-                Login
+                Sign in
             </button>
 
         </form>
@@ -102,14 +117,13 @@
         <div class="text-center mt-3">
             <p>
                 Don't have an account?
-                <a href="{% url 'auth:student_register' %}">Register</a>
+                <a href="{% url 'auth:student_register' %}">Sign up</a>
             </p>
         </div>
 
         <div class="text-center mt-3">
             <p>
-                Forgot Password?
-                <a href="{% url 'auth:reset_password' %}">Reset Password</a>
+                <a href="{% url 'landing' %}">Back to Home</a>
             </p>
         </div>
 

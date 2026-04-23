@@ -53,10 +53,11 @@ TEMPLATES = [
 SECRET_KEY = os.environ.get('SECRET_KEY')
 #SECRET_KEY = 'dev-secret-key-123'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# SECURITY WARNING: don't run with debug turned on in production! 
+DEBUG = False 
+#DEBUG = True
 
-ALLOWED_HOSTS = ["issa-projecthub.onrender.com"]
+ALLOWED_HOSTS = ["issa-projecthub.onrender.com"] 
 
 #ALLOWED_HOSTS = ["*"]
 
@@ -129,7 +130,7 @@ DATABASES = {
 }
 
 # ADD THIS
-DATABASES['default']['CONN_HEALTH_CHECKS'] = True 
+DATABASES['default']['CONN_HEALTH_CHECKS'] = True  
 
 
 # Database
@@ -144,8 +145,8 @@ DATABASES = {
        'HOST': 'localhost',                   # MySQL server host
         'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
     }
-}"""
-  
+}
+  """
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -221,7 +222,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True

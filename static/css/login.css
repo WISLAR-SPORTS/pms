@@ -3,16 +3,16 @@ body {
     
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #195208;
+    background-color: #e7f3e2;
 
     /* grid background */
     background-image:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04), transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(12, 67, 6, 0.05), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(163, 232, 161, 0.04), transparent 40%),
 
     /* grid lines */
-    linear-gradient(rgba(248, 242, 242, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 241, 241, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(91, 35, 35, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 47, 47, 0.04) 1px, transparent 1px);
 
     background-size: 50px 50px;
 
@@ -21,23 +21,47 @@ body {
     justify-content: center;
     min-height: 100vh;
 }
-
-/* Wrapper */
 .login-wrapper {
     width: 100%;
-    padding: 20px;
+    padding: 60px 20px 20px;
+   
 }
 
-/* Card */
+
+.logo-container {
+    text-align: center;
+}
+.login-logo {
+    width: 150px;
+    margin-bottom: 15px; /* 👈 pulls card up under logo */
+    position: relative;
+    z-index: 2;
+    
+    
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0d6efd; /* matches Bootstrap */
+    letter-spacing: 1px;
+    display: block;
+    margin: 0 auto 15px auto; /* 👈 centers ONLY the logo */ 
+}
+
+.brand-name span {
+    color: #4de378;          /* highlight part of the name */
+}
 .login-card {
     max-width: 400px;
     margin: auto;
-    
-    padding: 30px;
-    
-    background: rgba(255, 255, 255, 0.95);
+    padding: 70px 30px 30px; /* 👈 space for logo */
+
+    background: rgba(223, 238, 224, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Inputs */
