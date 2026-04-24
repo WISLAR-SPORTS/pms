@@ -51,15 +51,15 @@ TEMPLATES = [
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-#SECRET_KEY = 'dev-secret-key-123'
+# SECRET_KEY = 'dev-secret-key-123'
 
-# SECURITY WARNING: don't run with debug turned on in production! 
+#ECURITY WARNING: don't run with debug turned on in production! 
 DEBUG = False 
 #DEBUG = True
 
 ALLOWED_HOSTS = ["issa-projecthub.onrender.com"] 
 
-#ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -130,7 +130,7 @@ DATABASES = {
 }
 
 # ADD THIS
-DATABASES['default']['CONN_HEALTH_CHECKS'] = True  
+DATABASES['default']['CONN_HEALTH_CHECKS'] = True   
 
 
 # Database
@@ -146,7 +146,7 @@ DATABASES = {
         'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
     }
 }
-  """
+ """
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

@@ -1,9 +1,24 @@
 
         
         
-        
-        
-        
+        .my-login-btn {
+            border: 2px solid #000;
+            transition: 0.3s ease;
+            font-size: 14px;
+        }
+       
+        .my-login-btn:hover {
+            transform: scale(1.05);
+            background-color: #ff9800;
+        }
+        .my-login-btn i {
+            margin-right: 5px;
+            font-size: 23px;
+        }
+        .login-text {
+            font-size: 20px;
+            font-weight: 700;
+        }
         body.default-theme {
             
             color: #212529;
@@ -63,7 +78,11 @@
              box-shadow: 0 4px 15px rgba(0,0,0,0.5);
          }
 
+         .navbar-brand{
+            color: black;
+            font-size: 30px;
 
+         }
 
 
 
@@ -86,7 +105,7 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar-card {
-    background: rgba(248, 249, 248, 0.85); /* semi-transparent card */
+    background:  #f4f8f3; /* semi-transparent card */
     backdrop-filter: blur(10px);       /* glass effect */
     
     border-radius: 15px;
@@ -105,15 +124,15 @@ body.dark-mode .navbar-card {
 
 
 .theme-label {
-    color: #f1d016;
-    font-size: 20px;
-    font-weight: 500;
+    color: #111110;
+    font-size: 30px;
+    font-weight: 700;
     letter-spacing: 1px;
 }
 
 .theme-btn i {
-    color: #ffd43b;  /* golden yellow moon */
-    font-size: 18px;
+    color: #d19813d4;  /* golden yellow moon */
+    font-size: 24px;
 }
 
 h1 {
@@ -209,13 +228,22 @@ p {
 .footer-section h6 {
     color: #070101;
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 500px;
 }
 
 .footer-section p {
     color: rgba(11, 3, 3, 0.7);
-    font-weight: 400px;
+    font-weight: 500px;
+    font-size: 18px;
+    
+}
+.footer-section p span {
+    color: #ff9800;
+    font-weight: 700;
+    font-size: 30px;
+    font-style: oblique;
+    
 }
 
 
@@ -243,22 +271,7 @@ p {
             padding: 100px 20px;
             text-align: center;
         }
-
-        @media (max-width: 576px) {
-            .hero { padding: 50px 15px; }
-            .hero h1 { font-size: 28px; }
-            .floating-message {
-                font-size: 14px;
-                padding: 10px 14px;
-            }
-        
-            .btn {
-                width: 100%;
-            }
-
-
-
-        }
+       
 
         /* Cards */
         .feature-card {
@@ -392,12 +405,12 @@ p {
 }
 
 .dark-mode .stats-section {
-    background: linear-gradient(135deg, #111, #1e1e1e);
+    background: linear-gradient(135deg, #685f5f, #e9dada);
     color: white;
 }
 
 .dark-mode .stat-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(252, 248, 248, 0.05);
     backdrop-filter: blur(10px);
 
     border-radius: 16px;
@@ -415,15 +428,16 @@ p {
 .dark-mode .stat-card h2 {
     font-size: 32px;
     font-weight: 800;
-    color: #ffc107; /* highlight color */
+    color: #f8f2f2; /* highlight color */
 }
 
 .dark-mode .stat-card p {
     margin: 0;
-    font-size: 14px;
+    font-size: 18px;
     opacity: 0.8;
     letter-spacing: 0.5px;
     color: white;
+    font-weight:500;
 }
 
 body.default-theme .stats-section {
@@ -608,4 +622,26 @@ body.default-theme .how-section {
     border-radius: 10px;
     padding: 10px;
     font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+    .footer-section {
+        text-align: center;
+    }
+}
+@media (max-width: 576px) {
+    .hero { padding: 50px 15px; }
+    .hero h1 { font-size: 28px; }
+    .floating-message {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+
+
 }

@@ -26,7 +26,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-card px-3 px-lg-5">
     <img src="{% static 'images/LOGO.png' %}" class="nav-logo me-2" alt="Logo">
-    <a class="navbar-brand fw-bold" href="#">DMS</a>
+    <a class="navbar-brand fw-bold" href="#">Project@Hub</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -34,8 +34,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="ms-auto mt-3 mt-lg-0">
-            <a href="{% url 'auth:login' %}" class="btn btn-warning">
-                <i class="fas fa-sign-in-alt"></i> Login
+            <a href="{% url 'auth:login' %}" class="btn btn-warning my-login-btn">
+                <span class="login-text">Sign in</span>
+            </a>
+            <a href="{% url 'auth:student_register' %}" class="btn btn-warning my-login-btn">
+                <span class="login-text">Sign Up</span>
             </a>
             <span class="theme-label ms-3">Theme</span>
             <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-2 theme-btn">
@@ -63,21 +66,21 @@
             <div class="col-6 col-md-3">
                 <div class="stat-card">
                     <h2>500+</h2>
-                    <p>Dissertations Managed</p>
+                    <p>Dissertations can be Managed</p>
                 </div>
             </div>
 
             <div class="col-6 col-md-3">
                 <div class="stat-card">
                     <h2>1200+</h2>
-                    <p>Students</p>
+                    <p>Students can </p>
                 </div>
             </div>
 
             <div class="col-6 col-md-3">
                 <div class="stat-card">
                     <h2>60%</h2>
-                    <p>Faster Reviews</p>
+                    <p>Faster Reviews Guaranteed</p>
                 </div>
             </div>
 
@@ -316,14 +319,17 @@
      data-bs-toggle="modal"
      data-bs-target="#feedbackModal">
     💬 please kindly click me to leave your comment in the feedback section
-</div><footer class="footer-section text-white">
+</div>
+
+
+<footer class="footer-section text-white">
 
     <div class="container py-4">
 
         <div class="row text-center text-md-start align-items-center">
 
             <div class="col-md-6 mb-3 mb-md-0">
-                <h6 class="fw-bold">Dissertation Management System</h6>
+                <h6 class="fw-bold">Enjoy the Simplified Approach</h6>
                 <p class="mb-0 small opacity-75">
                     Managing submissions, supervision, and reviews efficiently.
                 </p>
@@ -331,7 +337,7 @@
 
             <div class="col-md-6 text-md-end">
                 <p class="mb-1 small">© 2026 All Rights Reserved</p>
-                <p class="mb-0 small">Designed & Built by Issa@</p>
+                <p class="mb-0 small">Designed & Built by <span>Issa@</span></p>
             </div>
 
         </div>

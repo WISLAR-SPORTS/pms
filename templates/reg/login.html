@@ -26,12 +26,23 @@
 <div class="login-wrapper">
     <div class="logo-container">
         <img src="{% static 'images/LOGO.png' %}" alt="Logo" class="login-logo">
+
         <p class="brand-name">Pro<span>je</span>ct<span>@</span>Hub</p>
+    </div>
 
 
     <div class="login-card shadow">
 
         <h2 class="text-center mb-4">Welcome Back</h2>
+        <button type="button" class="google-btn w-100" onclick="comingSoon()">
+            <img src="https://developers.google.com/identity/images/g-logo.png" 
+                 alt="Google logo" class="google-icon">
+            <span>Sign in with Google</span>
+        </button>
+<!--divider-->
+        <div class="divider">
+            <small>OR</small>
+        </div>
 
         <!-- 🔴 ACCOUNT LOCKED MESSAGE -->
         {% if locked %}
@@ -137,6 +148,11 @@ function togglePassword() {
     password.type = password.type === "password" ? "text" : "password";
 }
 </script>
+<script>
+    function comingSoon() {
+        alert("Google sign-in feature coming soon!");
+    }
+    </script>
 
 </body>
 </html>
