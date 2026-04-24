@@ -33,18 +33,24 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="ms-auto mt-3 mt-lg-0">
+        <div class="ms-auto d-flex align-items-center gap-3 mt-3 mt-lg-0 flex-wrap">
+    
             <a href="{% url 'auth:login' %}" class="btn btn-warning my-login-btn">
                 <span class="login-text">Sign in</span>
             </a>
-            <br>
+    
             <a href="{% url 'auth:student_register' %}" class="btn btn-warning my-login-btn">
                 <span class="login-text">Sign Up</span>
             </a>
-            <span class="theme-label ms-3">Theme</span>
-            <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-2 theme-btn">
-                <i class="fas fa-moon"></i>
-            </button>
+    
+            <div class="d-flex align-items-center gap-2">
+                <span class="theme-label">Theme</span>
+    
+                <button onclick="toggleDarkMode()" class="btn btn-outline-dark theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+    
         </div>
     </div>
 </nav>
