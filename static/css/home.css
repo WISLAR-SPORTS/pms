@@ -80,7 +80,7 @@
 
          .navbar-brand{
             color: black;
-            font-size: 30px;
+            font-size: 20px;
 
          }
 
@@ -404,6 +404,9 @@ p {
     z-index: 9999;
 }
 
+.navbar-card .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
 .dark-mode .stats-section {
     background: linear-gradient(135deg, #685f5f, #e9dada);
     color: white;

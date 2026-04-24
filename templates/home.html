@@ -24,7 +24,7 @@
 <body class="default-theme">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-card px-3 px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-light navbar-card px-3 px-lg-5">
     <img src="{% static 'images/LOGO.png' %}" class="nav-logo me-2" alt="Logo">
     <a class="navbar-brand fw-bold" href="#">Project@Hub</a>
 
@@ -37,6 +37,7 @@
             <a href="{% url 'auth:login' %}" class="btn btn-warning my-login-btn">
                 <span class="login-text">Sign in</span>
             </a>
+            <br>
             <a href="{% url 'auth:student_register' %}" class="btn btn-warning my-login-btn">
                 <span class="login-text">Sign Up</span>
             </a>
