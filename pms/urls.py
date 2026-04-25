@@ -20,7 +20,7 @@ from django.urls import path
 # pms/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from Auth.views import landing_page
+from Auth.views import landing_page, health_check
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -29,12 +29,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    
     path('', landing_page, name='landing'),
+    path("health/", health_check, name='health'),
     path('auth/', include('Auth.urls', namespace='auth')),  # use the same namespace
     path('supervisor/', include('Supervisor.urls', namespace='supervisor')),
     path('project/', include('project.urls', namespace='project')),
     path('chaining/', include('smart_selects.urls')),
     path('submission/', include('submission.urls', namespace='submission')),
     path('feedback/', include('feedback.urls', namespace='feedback')),
+    
 ]
 
 if settings.DEBUG:
