@@ -311,11 +311,10 @@ def custom_password_reset(request):
 
 
 # keeping my site live by piging it after 
-from django.http import JsonResponse
 from django.http import JsonResponse, HttpResponseNotAllowed
 
 def health_check(request):
-    if request.method != "GET":
-        return HttpResponseNotAllowed(["GET"])
+    if request.method not in ["GET", "HEAD"]:
+        return HttpResponseNotAllowed(["GET", "HEAD"])
     
     return JsonResponse({"status": "ok"})
