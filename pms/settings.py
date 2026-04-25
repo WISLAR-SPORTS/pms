@@ -51,7 +51,7 @@ TEMPLATES = [
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECRET_KEY = 'dev-secret-key-123'
+#SECRET_KEY = 'dev-secret-key-123'
 
 #ECURITY WARNING: don't run with debug turned on in production! 
 DEBUG = False 
@@ -59,7 +59,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["issa-projecthub.onrender.com"] 
 
-# ALLOWED_HOSTS = ["*"]
+#ALLOWED_HOSTS = ["*"]
 
 # Application definition
 

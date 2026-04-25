@@ -4,6 +4,7 @@ from .views import student_register, load_departments,log, login, student_dashbo
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from .views import custom_password_reset
+from .views import health_check
 
 
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('profile/edit/', edit_profile, name='edit_profile'),
     path('reset-password/', custom_password_reset, name='reset_password'),
+    path("health/", health_check, name='health'),
 
 ]

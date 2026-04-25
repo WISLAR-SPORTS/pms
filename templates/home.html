@@ -24,7 +24,7 @@
 <body class="default-theme">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light navbar-card px-3 px-lg-5">
+<nav id="nav" class="navbar navbar-expand-lg navbar-light navbar-card px-3 px-lg-5">
     <img src="{% static 'images/LOGO.png' %}" class="nav-logo me-2" alt="Logo">
     <a class="navbar-brand fw-bold" href="#">Project@Hub</a>
 
@@ -65,7 +65,8 @@
     <a href="{% url 'auth:login' %}" class="btn btn-warning btn-lg mt-4">
         <i class="fas fa-rocket"></i> Get Started
     </a>
-</section><section class="stats-section text-center py-5">
+</section>
+<section id="stats" class="stats-section text-center py-5">
     <div class="container">
 
         <div class="row g-4">
@@ -153,7 +154,7 @@
 </button> -->
 
 <!-- Features -->
-<section class="container py-5 text-center">
+<section id="features" class="container py-5 text-center">
     <h2 class="mb-5 fw-bold" data-aos="fade-up">Key Features</h2>
 
     <div class="row g-4">
@@ -185,7 +186,7 @@
     </div>
 </section>
 
-<section class="container py-5 text-center">
+<section id="views" class="container py-5 text-center">
     <h2 class="fw-bold mb-5">What Users Say</h2>
 
     <div class="row g-4">
@@ -258,7 +259,7 @@
   </div>
 
   <!--how to get started-->
-  <section class="how-section py-5 text-center">
+  <section id="started" class="how-section py-5 text-center">
 
     <div class="container">
 
@@ -267,6 +268,33 @@
         </h2>
 
         <div class="row g-4">
+
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <p>Sign Up</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <p>Sign in</p>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="step-card" data-aos="fade-up">
+                    <div class="icon-box">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <p>Submit </p>
+                </div>
+            </div>
 
             <div class="col-6 col-md-3">
                 <div class="step-card" data-aos="fade-up">
@@ -309,7 +337,7 @@
     </div>
 
 </section>
-<section class="cta-section">
+<section id="cta" class="cta-section">
     
     <div class="container">
         <h2 class="fw-bold mb-3">Start Managing Your Dissertation Today</h2>
@@ -322,14 +350,14 @@
 
 </section>
 
-<div class="floating-message"
+<div id="fmessage" class="floating-message"
      data-bs-toggle="modal"
      data-bs-target="#feedbackModal">
     💬 please kindly click me to leave your comment in the feedback section
 </div>
 
 
-<footer class="footer-section text-white">
+<footer id="footer" class="footer-section text-white">
 
     <div class="container py-4">
 
@@ -350,12 +378,13 @@
         </div>
 
     </div>
-
 </footer>
 
 <!-- Scripts (IMPORTANT: at bottom) -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js/dist/driver.css">
+
 
 <script>
     // 🌙 Dark Mode
@@ -450,6 +479,6 @@
             document.body.classList.add(savedTheme);
         };
         </script>
-  
+   
 </body>
 </html>

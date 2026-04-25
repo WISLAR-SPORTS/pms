@@ -648,3 +648,17 @@ body.default-theme .how-section {
 
 
 }
+
+#tour-hand {
+    position: absolute;
+    font-size: 28px;
+    z-index: 10000;
+    pointer-events: none;
+    transition: all 0.6s ease;
+    animation: handBounce 1s infinite;
+}
+
+@keyframes handBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}

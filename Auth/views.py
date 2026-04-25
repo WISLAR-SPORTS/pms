@@ -308,3 +308,14 @@ def custom_password_reset(request):
         form = PasswordResetCustomForm()
 
     return render(request, "accounts/password_reset.html", {"form": form})
+
+
+# keeping my site live by piging it after 
+from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotAllowed
+
+def health_check(request):
+    if request.method != "GET":
+        return HttpResponseNotAllowed(["GET"])
+    
+    return JsonResponse({"status": "ok"})
