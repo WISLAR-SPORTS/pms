@@ -18,40 +18,45 @@ from django_ratelimit.decorators import ratelimit
 from django.core.cache import cache
 from django.utils import timezone
 
+from django.contrib import messages
+from django.shortcuts import render, redirect
+
 @login_required
 def edit_profile(request):
     AuditLog.objects.create(
         user=request.user if request.user.is_authenticated else None,
-        action=f"Visited edit profile page"
+        action="Visited edit profile page"
     )
 
     user = request.user
 
     if request.method == 'POST':
         form = EditProfileWithPasswordForm(request.POST, instance=user)
+
         if form.is_valid():
-            # Update profile fields
+            # Save profile fields
             form.save()
-            
+
             # Handle password change
             old_password = form.cleaned_data.get('old_password')
             new_password = form.cleaned_data.get('new_password1')
+
             if old_password and new_password:
                 if user.check_password(old_password):
                     user.set_password(new_password)
                     user.save()
-                    # Keep user logged in after password change
                     update_session_auth_hash(request, user)
                 else:
                     form.add_error('old_password', 'Current password is incorrect.')
                     return render(request, 'reg/edit_profile.html', {'form': form})
-            
+
+            # ✅ ONLY HERE
+            messages.success(request, "Your profile has been updated successfully.")
+
             return redirect('auth:edit_profile')
+
     else:
         form = EditProfileWithPasswordForm(instance=user)
-#success message after updating the profile
-        messages.success(request, "Your profile has been updated successfully.")
-
 
     return render(request, 'reg/edit_profile.html', {'form': form})
 

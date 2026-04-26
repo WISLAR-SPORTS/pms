@@ -1,0 +1,161 @@
+/* Page background */
+body {
+    background: #f5f7fb;
+}
+
+/* Card */
+.edit-profile-card {
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    background: #ffffff;
+    transition: 0.3s ease;
+}
+
+.edit-profile-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Header */
+.card-header {
+    border-radius: 16px 16px 0 0 !important;
+    background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+    border: none;
+    padding: 20px;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Form labels */
+label {
+    font-size: 20px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input, select, textarea {
+    border-radius: 10px !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 10px 12px !important;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: #fafafa;
+}
+
+/* Focus effect */
+input:focus, select:focus, textarea:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.1) !important;
+    background: #fff;
+}
+
+/* Error messages */
+.text-danger {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Section title */
+h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* Hint text */
+small.text-muted {
+    font-size: 12px;
+}
+
+/* Buttons */
+.saas-btn {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.saas-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+/* Outline button */
+.saas-btn-outline {
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: 1px solid #d1d5db;
+    background: transparent;
+    color: #374151;
+    transition: 0.3s;
+}
+
+.saas-btn-outline:hover {
+    background: #f3f4f6;
+}
+
+/* Alert */
+.alert {
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+/* Divider */
+hr {
+    opacity: 0.1;
+}
+
+/* Spacing between fields */
+.mb-3 {
+    margin-bottom: 18px !important;
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-header {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .card-header h4 {
+        font-size: 18px;
+    }
+
+    input, select {
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    .saas-btn,
+    .saas-btn-outline {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn + .btn {
+        margin-left: 0 !important;
+    }
+}
+
+/* 💻 Large screens polish */
+@media (min-width: 992px) {
+    .edit-profile-card {
+        padding: 20px;
+    }
+}
