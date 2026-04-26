@@ -50,16 +50,16 @@ TEMPLATES = [
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-#SECRET_KEY = 'dev-secret-key-123'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'dev-secret-key-123'
 
 #ECURITY WARNING: don't run with debug turned on in production! 
-DEBUG = False 
-#DEBUG = True
+#DEBUG = False 
+DEBUG = True
 
-ALLOWED_HOSTS = ["issa-projecthub.onrender.com"] 
+#ALLOWED_HOSTS = ["issa-projecthub.onrender.com"] 
 
-#ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -121,7 +121,7 @@ WSGI_APPLICATION = 'pms.wsgi.application'
 import os
 import dj_database_url
 
-
+"""
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
@@ -132,10 +132,10 @@ DATABASES = {
 # ADD THIS
 DATABASES['default']['CONN_HEALTH_CHECKS'] = True   
 
-
+"""
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-"""
+
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.mysql',  # switch from sqlite3 to mysql
@@ -146,7 +146,7 @@ DATABASES = {
         'PORT': '3307',                         # MySQL port (use 3307 if MariaDB is running)
     }
 }
- """
+ 
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -222,10 +222,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
+"""
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True  
+CSRF_COOKIE_SECURE = True  """

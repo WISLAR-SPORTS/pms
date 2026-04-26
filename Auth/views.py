@@ -8,7 +8,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login as auth_login
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+
 from Audits.models import AuditLog
 from project.models import Project
 from django.db.models import Count, Q
@@ -129,7 +129,7 @@ def reset_attempts(username):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower() #normalizing 
         password = request.POST.get('password')
 
         # 🔴 CHECK LOCK FIRST
